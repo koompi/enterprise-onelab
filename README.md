@@ -75,4 +75,10 @@ To continue its operation
 virsh resume $MACHINE
 ```
 
+To screenshot its screen
+
+```bash
+virsh screenshot $MACHINE $LOCATION2SAVE
+```
+
 
