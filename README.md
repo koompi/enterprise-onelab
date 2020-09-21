@@ -35,7 +35,7 @@ Next we need to add the selected users to group kvm and change some permission h
 ```bash
 sudo chgrp $USER /var/lib/libvirt
 sudo chmod 775 /var/lib/libvirt
-sudo chmod -aG kvm $USER
+sudo usermod -aG kvm $USER
 ```
 
 If the $USER is currently log in, it must be logged out.
