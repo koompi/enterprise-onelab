@@ -33,8 +33,8 @@ sudo virsh net-autostart default
 Next we need to add the selected users to group kvm and change some permission here and there
 
 ```bash
-sudo chgrp $USER /var/lib/libvirt
-sudo chmod 775 /var/lib/libvirt
+sudo chgrp -R $USER /var/lib/libvirt
+sudo chmod -R 775 /var/lib/libvirt
 sudo usermod -aG kvm $USER
 ```
 
