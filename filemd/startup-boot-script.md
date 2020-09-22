@@ -24,9 +24,8 @@ And then paste this in
 
 ```console
 [Unit]
-Description=Script
+Description=Bootup Spice
 After=graphical.target
-Conflicts=getty@tty1.service
 
 [Service]
 Type=idle
