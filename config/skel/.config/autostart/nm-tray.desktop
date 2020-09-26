@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/usr/bin/nm-tray
+Name=nm-tray
+OnlyShowIn=LXQt;
+Type=Application
+Version=1.0
+X-LXQt-Need-Tray=true
