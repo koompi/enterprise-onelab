@@ -9,7 +9,6 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from backendVM import *
 import os
 
 
@@ -111,7 +110,7 @@ class Ui_main01(object):
         # print (storage)
     def installVM(self, main01):
 
-        virshCreate = "sudo -S <<< 2152 virt-install --name test2 --ram {} --vcpu 2 --cdrom=/var/lib/libvirt/boot/archlinux-2020.08.01-x86_64.iso --disk path=/var/lib/libvirt/images/test2.qcow2,size={},format=qcow2,bus=virtio --graphics spice,listen=0.0.0.0,password=pass01 --noautoconsole --os-type=linux --os-variant=generic --check all=off".format(self.valueRam, self.storage)
+        virshCreate = "sudo -S <<< 123 virt-install --name test20 --ram {} --vcpu 2 --cdrom=/var/lib/libvirt/boot/archlinux-2020.08.01-x86_64.iso --disk path=/var/lib/libvirt/images/test20.qcow20,size={},format=qcow2,bus=virtio --graphics spice,listen=0.0.0.0,password=pass01 --noautoconsole --os-type=linux --os-variant=generic --check all=off".format(self.valueRam, self.storage)
 
         os.popen(virshCreate)
 
