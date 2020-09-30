@@ -75,9 +75,14 @@ sudo systemctl enable lightdm NetworkManager
 
 ```console
 git clone https://github.com/koompi/onelab.git
-sudo cp -r --no-target-directory onelab/config/skel/. /etc/skel/
+tar zxf onelab/config/skel/skel.tar.gz -C /etc/skel/
 sudo cp -r --no-target-directory onelab/config/wallpapers/. /usr/share/wallpapers/
 sudo cp onelab/config/theme/lightdm-gtk-greeter.conf /etc/lightdm/
+mkdir -p /etc/lightdm/lightdm.conf.d
+echo -e "[SeatDefaults]
+greeter-hide-users=true
+greeter-show-manual-login=true
+allow-guest=false" >> /etc/lightdm/lightdm.conf.d/50-my-custom-config.conf
 ```
 
 ### create a new enviroment user
@@ -92,6 +97,14 @@ in order to completely start fresh, i would recommand to remove old user
 
 ```console
 userdel alarm
+```
+
+### Make Pi monitor fullscreen
+
+```console
+echo -e "disable_overscan=1
+hdmi_drive=2
+dtparam=audio=on" >> /boot/config.txt
 ```
 
 ### Reboot to new system
