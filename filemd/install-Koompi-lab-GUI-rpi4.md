@@ -65,6 +65,13 @@ echo -e 'alarm ALL=NOPASSWD: ALL' > /etc/sudoers.d/myOverrides
 sudo pacman -S xorg xorg-xinit mesa lightdm lightdm-gtk-greeter lxqt xf86-video-fbdev breeze-icons xf86-video-fbturbo-git base base-devel qt5-base qt5-declarative plasma-framework kwin fcitx fcitx-im kcm-fcitx kvantum-qt5 nm-connection-editor bluedevil networkmanager-qt ttf-khmer ttf-fira-sans ttf-droid firefox pulseaudio pulseaudio-bluetooth kwin xf86-video-qxl --needed
 ```
 
+```console
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+yay -S lxqt-kcm-integration-git nm-tray-git
+```
+
 ### start the neccessary service
 
 ```console
@@ -75,9 +82,14 @@ sudo systemctl enable lightdm NetworkManager
 
 ```console
 git clone https://github.com/koompi/onelab.git
-sudo cp -r --no-target-directory onelab/config/skel/. /etc/skel/
+tar zxf onelab/config/skel/skel.tar.gz -C /etc/skel/
 sudo cp -r --no-target-directory onelab/config/wallpapers/. /usr/share/wallpapers/
 sudo cp onelab/config/theme/lightdm-gtk-greeter.conf /etc/lightdm/
+mkdir -p /etc/lightdm/lightdm.conf.d
+echo -e "[SeatDefaults]
+greeter-hide-users=true
+greeter-show-manual-login=true
+allow-guest=false" >> /etc/lightdm/lightdm.conf.d/50-my-custom-config.conf
 ```
 
 ### create a new enviroment user
@@ -92,6 +104,14 @@ in order to completely start fresh, i would recommand to remove old user
 
 ```console
 userdel alarm
+```
+
+### Make Pi monitor fullscreen
+
+```console
+echo -e "disable_overscan=1
+hdmi_drive=2
+dtparam=audio=on" >> /boot/config.txt
 ```
 
 ### Reboot to new system
