@@ -70,7 +70,7 @@ The above is the instalation from normal repository, but it isn't enough, so we 
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-yay install nm-tray-git lxqt-kcm-integration-extra.git
+yay -S nm-tray-git lxqt-kcm-integration-extra.git
 ```
 
 ### start the neccessary service
