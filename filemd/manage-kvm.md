@@ -54,7 +54,5 @@ To allow image compression for over-network spice session for better performance
 
 ```console
 sudo virt-xml $MACHINE --edit --confirm --graphics image.compression='auto_glz' --graphics zlib.compression='auto' --graphics clipboard.copypaste='yes'
-sudo virt-xml $MACHINE --edit --confirm --graphics streaming.mode='filter'
+sudo virt-xml $MACHINE --edit --confirm --graphics streaming.mode='filter' --update
 ```
-
-
