@@ -65,6 +65,13 @@ echo -e 'alarm ALL=NOPASSWD: ALL' > /etc/sudoers.d/myOverrides
 sudo pacman -S xorg xorg-xinit mesa lightdm lightdm-gtk-greeter lxqt xf86-video-fbdev breeze-icons xf86-video-fbturbo-git base base-devel qt5-base qt5-declarative plasma-framework kwin fcitx fcitx-im kcm-fcitx kvantum-qt5 nm-connection-editor bluedevil networkmanager-qt ttf-khmer ttf-fira-sans ttf-droid firefox pulseaudio pulseaudio-bluetooth kwin xf86-video-qxl --needed
 ```
 
+```console
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+yay -S lxqt-kcm-integration-git nm-tray-git
+```
+
 ### start the neccessary service
 
 ```console
