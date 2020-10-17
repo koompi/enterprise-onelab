@@ -32,8 +32,8 @@ sudo systemctl enable lightdm NetworkManager
 ```console
 tar zxf enterprise-onelab/config/skel/skel.tar.gz -C /etc/skel/
 sudo cp -r --no-target-directory onelab/config/wallpapers/. /usr/share/wallpapers/
-sudo cp onelab/config/theme/lightdm-gtk-greeter.conf /etc/lightdm/
-sudo cp onelab/config/icons/* /usr/share/icons/
+sudo cp enterprise-onelab/config/theme/lightdm-gtk-greeter.conf /etc/lightdm/
+sudo cp enterprise-onelab/config/icons/* /usr/share/icons/
 sudo mkdir -p /etc/lightdm/lightdm.conf.d
 echo -e "[SeatDefaults]
 greeter-hide-users=true
@@ -83,7 +83,7 @@ reboot
 ## Extra installation
 
 ```console
-yay -S lxqt-kcm-integration-extra-git
+yay -S kde-cli-tools kwinplasma-workspace lxqt-kcm-integration-extra-git
 ```
 
 ## Log out and log back in
