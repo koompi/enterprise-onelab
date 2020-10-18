@@ -7,7 +7,7 @@
 ### Install an AUR Helper
 
 ```console
-git clone https://github.com/koompi/onelab.git
+git clone https://github.com/koompi/enterprise-onelab.git
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
