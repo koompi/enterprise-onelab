@@ -11,6 +11,7 @@ git clone https://github.com/koompi/enterprise-onelab.git
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+cd -
 ```
 
 ### Actual Install
