@@ -17,6 +17,7 @@ su
 And then we need to enable ip forwarding in linux kernel
 
 ```console
+sysctl net.ipv4.ip_forward=1
 echo '\
 net.ipv4.ip_forward=1
 net.ipv6.conf.default.forwarding=1
