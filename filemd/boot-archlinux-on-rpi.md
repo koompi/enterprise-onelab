@@ -56,15 +56,15 @@ wifi-menu -o
 ```console
 pacman-key --init
 pacman-key --populate archlinuxarm
-pacman -Sy archlinux-keyring base-devel bash-completion sudo networkmanager dhclient tcl python git glibc --overwrite /usr/include/crypt.h --overwrite /usr/lib/libcrypt.so
+pacman -Sy archlinux-keyring base-devel bash-completion networkmanager dhclient tcl python git glibc --needed --overwrite /usr/include/crypt.h --overwrite /usr/lib/libcrypt.so
 echo -e '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/myOverrides
 ```
 
 ### Start the network service
 
 ```console
-sudo systemctl start NetworkManager
 sudo systemctl enable NetworkManager
+sudo systemctl start NetworkManager
 ```
 
 ### Stop Junk Service
