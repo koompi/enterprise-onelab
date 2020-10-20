@@ -47,6 +47,8 @@ sudo chmod +x /usr/bin/kill-fcitx
 
 ### Create User
 
+``Note:`` Please ONLY CHANGE the ``$USER`` to the actual name of the USER (admin, user01...)
+
 ```console
 useradd -mg users -G wheel,power,storage,network -s /bin/bash $USER
 ```
@@ -78,6 +80,7 @@ dtparam=audio=on" >> /boot/config.txt
 ```console
 reboot
 ```
+``Note:`` This part is currently error (20/10/2020)
 
 ## Extra installation
 
