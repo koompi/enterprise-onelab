@@ -10,6 +10,7 @@ Document categorised into some catagory below:
 *   ONELAB04 [Enable Internet Forwarding from Wlan0 to Ethernet](/filemd/permanent-ip-forwarding.md)
 *   ONELAB05 [Boot Archlinuxarm on Raspberry PI4](/filemd/boot-archlinux-on-rpi.md)
 *   ONELAB06 [Install Koompi Lab GUI for Raspberry PI4](/filemd/install-Koompi-lab-GUI-rpi4.md)
-*   ONELAB07 [OneLab WhitePaper](/filemd/oneLab-whitepaper.md)
+*   ONELAB07 [Setup Local Content Server](filemd/configure-local-content-server.md)
+*   ONELAB08 [OneLab WhitePaper](/filemd/oneLab-whitepaper.md)
 
 Contributors: Regan, Charles, Ponereay
