@@ -6,6 +6,14 @@
 
 ### Install an AUR Helper
 
+If you come straight from finish boot without yet looking at **``Boot Archlinuxarm on Raspberry PI4``** readme, consider do this. Else, skip.
+
+```console
+sudo pacman -S base-devel
+```
+
+Now we can begin
+
 ```console
 git clone https://github.com/koompi/enterprise-onelab.git
 git clone https://aur.archlinux.org/yay.git
@@ -50,13 +58,15 @@ sudo chmod +x /usr/bin/kill-fcitx
 ``Note:`` Please ONLY CHANGE the ``$USER`` to the actual name of the USER (admin, user01...)
 
 ```console
-useradd -mg users -G wheel,power,storage,network -s /bin/bash $USER
+sudo useradd -mg users -G wheel,power,storage,network -s /bin/bash $USER
 ```
 
 ### Set Password
 
+``Note:`` Please ONLY CHANGE the ``$USER`` to the actual name of the USER (admin, user01...)
+
 ```console
-passwd $USERS
+sudo passwd $USERS
 ```
 
 ## Remove old users
