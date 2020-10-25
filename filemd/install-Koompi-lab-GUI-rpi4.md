@@ -15,8 +15,8 @@ sudo pacman -S base-devel
 Now we can begin
 
 ```console
-git clone https://github.com/koompi/enterprise-onelab.git
-git clone https://aur.archlinux.org/yay.git
+git clone https://github.com/koompi/enterprise-onelab.git --depth 1
+git clone https://aur.archlinux.org/yay.git --depth 1
 cd yay && makepkg -si && cd -
 ```
 
