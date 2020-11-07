@@ -12,7 +12,7 @@ If you come straight from finish boot without yet looking at **``Boot Archlinuxa
 sudo pacman -S base-devel
 ```
 
-Now we can begin
+## Now we can begin
 
 ```console
 git clone https://github.com/koompi/enterprise-onelab.git --depth 1
@@ -37,6 +37,7 @@ sudo systemctl enable lightdm NetworkManager
 ## Setup user GUI config 
 
 ```console
+sudo su
 tar zxf enterprise-onelab/config/skel/skel.tar.gz -C /etc/skel/
 sudo cp -r --no-target-directory enterprise-onelab/config/wallpapers/. /usr/share/wallpapers/
 sudo cp enterprise-onelab/config/theme/lightdm-gtk-greeter.conf /etc/lightdm/
@@ -51,32 +52,6 @@ echo -e '#!/bin/bash\nsleep 10\nkillall fcitx' > /usr/bin/kill-fcitx
 sudo chmod +x /usr/bin/kill-fcitx
 ```
 
-## Create a new enviroment user
-
-### Create User
-
-``Note:`` Please ONLY CHANGE the ``$USER`` to the actual name of the USER (admin, user01...)
-
-```console
-sudo useradd -mg users -G wheel,power,storage,network -s /bin/bash $USER
-```
-
-### Set Password
-
-``Note:`` Please ONLY CHANGE the ``$USER`` to the actual name of the USER (admin, user01...)
-
-```console
-sudo passwd $USERS
-```
-
-## Remove old users
-
-in order to completely start fresh, i would recommand to remove old user
-
-```console
-userdel alarm
-```
-
 ## Make Pi monitor fullscreen
 
 ```console
@@ -85,11 +60,31 @@ hdmi_drive=2
 dtparam=audio=on" >> /boot/config.txt
 ```
 
+## Create a new enviroment user
+
+### Create User and Set Password
+
+``Note:`` Please ONLY CHANGE the ``$USER`` to the actual name of the USER (admin, user01...)
+
+```console
+sudo useradd -mg users -G wheel,power,storage,network -s /bin/bash $USER
+sudo passwd $USERS
+```
+
+### Remove old users
+
+in order to completely start fresh, i would recommand to remove old user
+
+```console
+userdel alarm
+```
+
 ## Reboot to new system
 
 ```console
 reboot
 ```
+
 ``Note:`` This part is currently error (20/10/2020)
 
 ## Extra installation
