@@ -8,6 +8,12 @@
 yay -S tk --needed
 ```
 
+## Clone from this repo
+
+```console
+git clone https://github.com/koompi/enterprise-onelab.git --depth 1
+```
+
 ## Copy Icons into Directory
 
 ```console
@@ -35,10 +41,4 @@ Categories=Utility;TextEditor;Development;IDE;
 MimeType=text/plain;inode/directory;
 Actions=new-empty-window;
 Keywords=idle;
-```
-
-## Reboot
-
-```console
-reboot
 ```
