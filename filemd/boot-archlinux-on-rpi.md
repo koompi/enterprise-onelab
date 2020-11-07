@@ -13,9 +13,12 @@ sudo fdisk /dev/sd**X**
 
 ### create second partition (**n**, **p**, **2**, **enter**, **enter**), then write and exit (**w**)
 
+### create a swap partition
+
 ```console
 sudo mkfs.vfat /dev/sdX1
 sudo mkfs.ext4 /dev/sdX2
+sudo mkswap /dev/sdX3
 ```
 
 ### make folder and mount partitions
@@ -60,17 +63,19 @@ pacman -Sy archlinux-keyring base-devel bash-completion networkmanager dhclient 
 echo -e '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/myOverrides
 ```
 
-### Start the network service
+### Setup Swap
+
+```console
+sudo swapon /dev/mmcblk0p3
+```
+
+### Start the network service and Remove Junk Service
 
 ```console
 sudo systemctl enable NetworkManager
 sudo systemctl start NetworkManager
-```
-
-### Stop Junk Service
-
-```console
 sudo systemctl disable systemd-networkd-wait-online.service
+
 ```
 
 ### `(Optional)` Connect to wifi with NetworkManager
