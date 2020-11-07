@@ -59,6 +59,9 @@ wifi-menu -o
 ```console
 pacman-key --init
 pacman-key --populate archlinuxarm
+timedatectl set-timezone Asia/Phnom_Penh
+timedatectl set-ntp 1
+timedatectl
 pacman -Sy archlinux-keyring base-devel bash-completion networkmanager dhclient tcl python git glibc --needed --overwrite /usr/include/crypt.h --overwrite /usr/lib/libcrypt.so
 echo -e '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/myOverrides
 ```
@@ -75,7 +78,6 @@ sudo swapon /dev/mmcblk0p3
 sudo systemctl enable NetworkManager
 sudo systemctl start NetworkManager
 sudo systemctl disable systemd-networkd-wait-online.service
-
 ```
 
 ### `(Optional)` Connect to wifi with NetworkManager
