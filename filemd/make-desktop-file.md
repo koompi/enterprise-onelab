@@ -27,6 +27,8 @@ sudo cp desktop-icons/pythonidle.png /usr/share/applications/
 sudo nano /usr/share/applications/python-idle.desktop
 ```
 
+and then paste in this
+
 ```console
 [Desktop Entry]
 Name=Python IDLE
