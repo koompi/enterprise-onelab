@@ -54,6 +54,12 @@ password: ``root``
 wifi-menu -o
 ```
 
+### Add Koompi Repo
+
+```console
+echo -e "\n[koompiarm]\nSigLevel = Never\nServer = https://repo.koompi.org/kmp-arm/apps" >> /etc/pacman.conf
+```
+
 ### set up necessary packkit
 
 ```console
