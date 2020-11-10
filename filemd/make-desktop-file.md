@@ -1,6 +1,6 @@
 # How to Make Destop File for Icons
 
-**``This is example with making a icon for Python IDLE``**
+**```This is example with making a icon for Python IDLE```**
 
 ## Install dependency for IDLE
 
@@ -14,23 +14,20 @@ yay -S tk --needed
 git clone https://github.com/koompi/enterprise-onelab.git --depth 1
 ```
 
-## Copy Icons into Directory
+
+## Get into Sudo
+
+```console
+sudo su
+```
+
+## Copy Icons into Directory and Make a desktop file
 
 ```console
 cd enterprise-onelab
 sudo cp desktop-icons/pythonidle.png /usr/share/applications/
-```
-
-## Create a desktop file
-
-```console
-sudo nano /usr/share/applications/python-idle.desktop
-```
-
-and then paste in this
-
-```console
-[Desktop Entry]
+echo \
+'[Desktop Entry]
 Name=Python IDLE
 Comment=Python IDE called IDLE
 GenericName=Text Editor
@@ -42,5 +39,5 @@ StartupWMClass=code
 Categories=Utility;TextEditor;Development;IDE;
 MimeType=text/plain;inode/directory;
 Actions=new-empty-window;
-Keywords=idle;
+Keywords=idle;' > /usr/share/applications/python-idle.desktop
 ```
