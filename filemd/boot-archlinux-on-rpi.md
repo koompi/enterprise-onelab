@@ -76,6 +76,7 @@ echo -e '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/myOverrides
 
 ```console
 sudo swapon /dev/mmcblk0p3
+echo '/dev/mmcblk0p3  none    swap    sw      0       0' >> /etc/fstab
 ```
 
 ### Start the network service and Remove Junk Service
