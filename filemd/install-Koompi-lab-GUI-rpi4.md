@@ -9,7 +9,7 @@
 If you come straight from finish boot without yet looking at **``Boot Archlinuxarm on Raspberry PI4``** readme, consider do this. Else, skip.
 
 ```console
-sudo pacman -S base-devel
+sudo pacman -S base-devel --needed
 ```
 
 ## Now we can begin
@@ -23,17 +23,22 @@ cd yay && makepkg -si && cd -
 ### Actual Install
 
 ```console
-yay -S xorg xorg-xinit mesa lightdm lightdm-gtk-greeter lxqt xf86-video-fbdev breeze-icons xf86-video-fbturbo-git qt5-base qt5-declarative plasma-framework kwin fcitx fcitx-im kcm-fcitx kvantum-qt5 nm-connection-editor bluedevil networkmanager-qt ttf-khmer ttf-fira-sans ttf-droid firefox pulseaudio pulseaudio-bluetooth chromium xf86-video-qxl accountsservice konsole screen ark libreoffice-fresh nano-syntax-highlighting cmake qt5-tools nm-tray-git kvantum-theme-fluent-git --needed --noconfirm
+yay -S xorg xorg-xinit mesa lightdm lightdm-gtk-greeter lxqt xf86-video-fbdev breeze-icons xf86-video-fbturbo-git qt5-base qt5-declarative plasma-framework kwin fcitx fcitx-im kcm-fcitx kvantum-qt5 nm-connection-editor bluedevil networkmanager-qt ttf-khmer ttf-fira-sans ttf-droid firefox pulseaudio pulseaudio-bluetooth chromium xf86-video-qxl accountsservice konsole ksysguard tk code-headmelted-bin screen ark libreoffice-fresh nano-syntax-highlighting cmake qt5-tools nm-tray-git kvantum-theme-fluent-git --needed --noconfirm
 ```
-
-### **``Note:``** From this parts, Linux needs root permission, either via **sudo** or **su** 
 
 ## Start the neccessary service
 
 ```console
 sudo systemctl enable lightdm NetworkManager
 ```
+```
+########################################################################################
+```
 
+### **``Note:``** From this parts, Linux needs root permission, either via **sudo** or **su** 
+```
+########################################################################################
+```
 ## Setup user GUI config 
 
 ```console
@@ -57,7 +62,9 @@ sudo chmod +x /usr/bin/kill-fcitx
 ```console
 echo -e "disable_overscan=1
 hdmi_drive=2
-dtparam=audio=on" >> /boot/config.txt
+dtparam=audio=on
+hdmi_group=2
+hdmi_mode=39" >> /boot/config.txt
 ```
 
 ## Create a new enviroment user
