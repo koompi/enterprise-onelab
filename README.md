@@ -5,7 +5,7 @@ This is a project dedicated to One School Once Lab
 Document categorised into some catagory below:
 
 ## OS
-*   OS01 [Install KoompiLAB OS on Raspberry Pi4](/filemd/install-koompilab-os.md)
+*   OS01 [Install KoompiLAB OS on Raspberry Pi4](/filemd/install-os.md)
 
 ## Other Operations
 *   Ops01 [Install Kernel-based Virtual Machine](/filemd/install-kvm.md)
