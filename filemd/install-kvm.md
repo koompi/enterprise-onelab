@@ -10,7 +10,7 @@ sudo pacman -S  virt-install qemu libguestfs vde2 spice bridge-utils virt-viewer
 Next we need to add some modules to start at boot. 
 
 ```console
-sudo echo -e 'virtio-net\nvirtio-blk\nvirtio-scsi\nvirtio-balloon\ntun' >> /etc/modules-load.d/modules.conf
+echo -e 'virtio-net\nvirtio-blk\nvirtio-scsi\nvirtio-balloon\ntun' | sudo tee -a /etc/modules-load.d/modules.conf  > /dev/null 
 ```
 
 Or if you want to start it with reboot, you may do this one-time command 
