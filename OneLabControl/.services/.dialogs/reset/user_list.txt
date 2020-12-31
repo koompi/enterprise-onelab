@@ -1,8 +1,0 @@
-test.2
-virak.kong
-test.t
-Administrator
-user.1
-dns-master
-Guest
-krbtgt
