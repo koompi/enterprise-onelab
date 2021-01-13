@@ -19,14 +19,14 @@ ssid=Sala
 # Driver interface type (hostap/wired/none/nl80211/bsd)
 driver=nl80211
 # Country code (ISO/IEC 3166-1)
-country_code=US
+#country_code=US
 
 # Operation mode (a = IEEE 802.11a (5 GHz), b = IEEE 802.11b (2.4 GHz)
 hw_mode=g
 # Channel number
-channel=7
+channel=6
 # Maximum number of stations allowed
-max_num_sta=5
+#max_num_sta=5
 
 # Bit field: bit0 = WPA, bit1 = WPA2
 wpa=2
@@ -43,9 +43,12 @@ wpa_passphrase=Koompi-Onelab
 logger_stdout=-1
 logger_stdout_level=2
 
+ignore_broadcast_ssid=0
+macaddr_acl=0
+
 # Uncomment and modify the following section if your device supports 802.11n
 ## Enable 802.11n support
-ieee80211n=1
+#ieee80211n=1
 ## QoS support
 #wmm_enabled=1
 ## Use "iw list" to show device capabilities and modify ht_capab accordingly
@@ -58,13 +61,14 @@ ieee80211n=1
 sudo mv /etc/dhcpd.conf{,.default}
 echo \
 'authoritative;
-option domain-name-servers 10.100.100.1;
-option subnet-mask 255.255.255.0;
-option routers 10.100.100.1;
 subnet 10.100.100.0 netmask 255.255.255.0 {
-    range 10.100.100.10 10.100.100.254;
-    max-lease-time 600;
-    allow unknown-clients;
+  range 10.100.100.10 10.100.100.254;
+  option broadcast-address 10.100.100.255;
+  option routers 10.100.100.1;
+  default-lease-time 600;
+  max-lease-time 7200;
+  option domain-name "local";
+  option domain-name-servers 10.100.100.1;
 }' | sudo tee /etc/dhcpd.conf
     
 sudo mv /etc/dhcpcd.conf{,.default}
