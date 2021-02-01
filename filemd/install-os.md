@@ -76,8 +76,8 @@ Then, we can start install the OS on to our SD Card
 
 ```console
 sudo tar --zstd -xvpf KoompiARM-30-01-2021.tar.zst
-sudo tar -xzvpf root.tar.gz -C /mnt/root
-sudo tar -xzvpf boot.tar.gz -C /mnt/boot
+sudo tar --zstd -xvpf root.tar.gz -C /mnt/root
+sudo tar --zstd -xvpf boot.tar.gz -C /mnt/boot
 sudo sync
 ```
 
