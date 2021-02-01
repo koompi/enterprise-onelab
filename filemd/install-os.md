@@ -67,10 +67,7 @@ sudo mount /dev/sdb2 /mnt/root
 First, we must download the OS from KOOMPI Repo
 
 ```console
-curl -o KoompiARM-10-11-2020.tar.gz https://repo.koompi.org/arm-iso/KoompiARM-10-11-2020.tar.gz
-```
-```console
-curl -o boot.tar.gz https://repo.koompi.org/arm-iso/boot.tar.gz
+curl -o KoompiARM-30-01-2021.tar.zst https://repo.koompi.org/arm-iso/KoompiARM-30-01-2020.tar.zst
 ```
 
 ***Should there be any error, just simply rerun the command again***
@@ -78,8 +75,9 @@ curl -o boot.tar.gz https://repo.koompi.org/arm-iso/boot.tar.gz
 Then, we can start install the OS on to our SD Card
 
 ```console
-sudo tar -xzvpf $(pwd)/KoompiARM-10-11-2020.tar.gz -C /mnt/root
-sudo tar -xzvpf $(pwd)/boot.tar.gz -C /mnt/boot
+sudo tar --zstd -xvpf KoompiARM-30-01-2021.tar.zst
+sudo tar -xzvpf root.tar.gz -C /mnt/root
+sudo tar -xzvpf boot.tar.gz -C /mnt/boot
 sudo sync
 ```
 

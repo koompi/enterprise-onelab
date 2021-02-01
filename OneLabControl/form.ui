@@ -1,0 +1,1741 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainWindow</class>
+ <widget class="QMainWindow" name="mainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1790</width>
+    <height>825</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>OneLab Master Control </string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:  #f0f2f5;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="pageSelect">
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:  #f0f2f5;  color: white;</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="manageTab">
+       <attribute name="title">
+        <string>Students</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="1">
+         <widget class="QScrollArea" name="scrollArea">
+          <property name="maximumSize">
+           <size>
+            <width>1000000</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color:  #f0f2f5;</string>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>1614</width>
+             <height>1500</height>
+            </rect>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>1500</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: #f0f2f5;</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_3">
+            <item row="3" column="1">
+             <widget class="QFrame" name="PC_8">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_12">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_8">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="8" column="0">
+             <widget class="QPushButton" name="remote_btn_22">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QFrame" name="PC_1">
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>400</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_5">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_1">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>570</width>
+                   <height>400</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="10" column="1">
+             <widget class="QPushButton" name="remote_btn_29">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="0">
+             <widget class="QPushButton" name="remote_btn_28">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="3">
+             <widget class="QFrame" name="PC_21">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_25">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_21">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QPushButton" name="remote_btn_10">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="1">
+             <widget class="QFrame" name="PC_32">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_36">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_32">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="9" column="4">
+             <widget class="QFrame" name="PC_28">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_32">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_28">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="10" column="4">
+             <widget class="QPushButton" name="remote_btn_31">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="4">
+             <widget class="QFrame" name="PC_34">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_38">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_34">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="14" column="5">
+             <widget class="QPushButton" name="remote_btn_38">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="3">
+             <widget class="QFrame" name="PC_27">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_31">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_27">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="2" column="4">
+             <widget class="QPushButton" name="remote_btn_7">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="1">
+             <widget class="QFrame" name="PC_20">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_24">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_20">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="5">
+             <widget class="QFrame" name="PC_5">
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_9">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_5">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>160000</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="13" column="3">
+             <widget class="QFrame" name="PC_33">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_37">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_33">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="7" column="0">
+             <widget class="QFrame" name="PC_19">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_23">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_16">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="14" column="3">
+             <widget class="QPushButton" name="remote_btn_36">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="5">
+             <widget class="QFrame" name="PC_23">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_27">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_23">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="4">
+             <widget class="QFrame" name="PC_4">
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_8">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="10" column="6">
+             <widget class="QPushButton" name="remote_btn_33">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="14" column="1">
+             <widget class="QPushButton" name="remote_btn_35">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="5">
+             <widget class="QFrame" name="PC_11">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_15">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_11">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="8" column="3">
+             <widget class="QPushButton" name="remote_btn_24">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="5">
+             <widget class="QPushButton" name="remote_btn_32">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="5">
+             <widget class="QPushButton" name="remote_btn_26">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="5">
+             <widget class="QPushButton" name="remote_btn_20">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="6">
+             <widget class="QFrame" name="PC_36">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_40">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_36">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="9" column="5">
+             <widget class="QFrame" name="PC_29">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_33">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_29">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="9" column="0">
+             <widget class="QFrame" name="PC_25">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_29">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_25">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QPushButton" name="remote_btn_5">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="3">
+             <widget class="QPushButton" name="remote_btn_18">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="4">
+             <widget class="QPushButton" name="remote_btn_19">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="5">
+             <widget class="QPushButton" name="remote_btn_8">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="14" column="0">
+             <widget class="QPushButton" name="remote_btn_34">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="6">
+             <widget class="QFrame" name="PC_30">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_34">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_30">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="8" column="6">
+             <widget class="QPushButton" name="remote_btn_27">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="3">
+             <widget class="QPushButton" name="remote_btn_12">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="14" column="4">
+             <widget class="QPushButton" name="remote_btn_37">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="0">
+             <widget class="QFrame" name="PC_13">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_17">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_13">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="7" column="4">
+             <widget class="QFrame" name="PC_22">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_26">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_22">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="2" column="6">
+             <widget class="QPushButton" name="remote_btn_9">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="1">
+             <widget class="QPushButton" name="remote_btn_17">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QFrame" name="PC_2">
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_6">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_2">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>570</width>
+                   <height>400</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="10" column="3">
+             <widget class="QPushButton" name="remote_btn_30">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="QPushButton" name="remote_btn_6">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="6">
+             <widget class="QPushButton" name="remote_btn_15">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="3">
+             <widget class="QFrame" name="PC_9">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_13">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_9">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="QFrame" name="PC_3">
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>400</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_7">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_3">
+                 <property name="maximumSize">
+                  <size>
+                   <width>570</width>
+                   <height>400</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="6" column="0">
+             <widget class="QPushButton" name="remote_btn_16">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="4">
+             <widget class="QPushButton" name="remote_btn_25">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="5">
+             <widget class="QFrame" name="PC_35">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_39">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_35">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="3" column="4">
+             <widget class="QFrame" name="PC_10">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_14">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_10">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="5" column="3">
+             <widget class="QFrame" name="PC_15">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_19">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_15">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="6" column="6">
+             <widget class="QPushButton" name="remote_btn_21">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="6">
+             <widget class="QFrame" name="PC_12">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_16">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_12">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="4" column="5">
+             <widget class="QPushButton" name="remote_btn_14">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QPushButton" name="remote_btn_11">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="1">
+             <widget class="QPushButton" name="remote_btn_23">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="4">
+             <widget class="QFrame" name="PC_16">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_20">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_17">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="5" column="5">
+             <widget class="QFrame" name="PC_17">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_21">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_18">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QFrame" name="PC_14">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_18">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_14">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="13" column="0">
+             <widget class="QFrame" name="PC_31">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_35">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_31">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="9" column="1">
+             <widget class="QFrame" name="PC_26">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_30">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_26">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="14" column="6">
+             <widget class="QPushButton" name="remote_btn_39">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="4">
+             <widget class="QPushButton" name="remote_btn_13">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="6">
+             <widget class="QFrame" name="PC_24">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_28">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_24">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="6">
+             <widget class="QFrame" name="PC_6">
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_10">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_6">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QFrame" name="PC_7">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_11">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_7">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="5" column="6">
+             <widget class="QFrame" name="PC_18">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_22">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_19">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QPushButton" name="remote_btn_4">
+              <property name="styleSheet">
+               <string notr="true">background-color:</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QTabWidget" name="tabWidget">
+          <property name="minimumSize">
+           <size>
+            <width>130</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>112</width>
+            <height>800</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: solid 3 blue; background-color:  #f0f2f5; color: black;</string>
+          </property>
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tab1">
+           <attribute name="title">
+            <string/>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="2" column="0">
+             <widget class="QPushButton" name="pause_btn">
+              <property name="minimumSize">
+               <size>
+                <width>94</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Droid Sans</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">padding: 5px; background-color: #fff;</string>
+              </property>
+              <property name="text">
+               <string> Pause     </string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-26.jpg</normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-26.jpg</iconset>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="0">
+             <widget class="QPushButton" name="file_btn">
+              <property name="minimumSize">
+               <size>
+                <width>94</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Droid Sans</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">padding: 5px; background-color: #fff;</string>
+              </property>
+              <property name="text">
+               <string>  File       </string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-30.jpg</normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-30.jpg</iconset>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QPushButton" name="blank_btn">
+              <property name="minimumSize">
+               <size>
+                <width>94</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Droid Sans</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">padding: 5px; background-color: #fff;</string>
+              </property>
+              <property name="text">
+               <string> Lock       </string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-19.jpg</normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-19.jpg</iconset>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="0">
+             <widget class="QPushButton" name="refresh_btn">
+              <property name="minimumSize">
+               <size>
+                <width>94</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Droid Sans</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">padding: 5px; background-color: #fff;</string>
+              </property>
+              <property name="text">
+               <string> Refresh </string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-28.jpg</normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-28.jpg</iconset>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="0">
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>200</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="1" column="0">
+             <widget class="QPushButton" name="play_btn">
+              <property name="minimumSize">
+               <size>
+                <width>94</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Droid Sans</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">padding: 5px; background-color: #fff;</string>
+              </property>
+              <property name="text">
+               <string>  Play       </string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../../.designer/backup/images/play.jpg</normaloff>../../.designer/backup/images/play.jpg</iconset>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <spacer name="verticalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="9" column="0">
+             <widget class="QPushButton" name="start_btn">
+              <property name="minimumSize">
+               <size>
+                <width>94</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Droid Sans</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">padding: 5px; background-color: #fff;</string>
+              </property>
+              <property name="text">
+               <string> On/Off  </string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../../.designer/backup/images/photo_2020-12-17_10-42-08.jpg</normaloff>../../.designer/backup/images/photo_2020-12-17_10-42-08.jpg</iconset>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0">
+             <widget class="QPushButton" name="screen_share_btn">
+              <property name="minimumSize">
+               <size>
+                <width>94</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Droid Sans</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">padding: 5px; background-color: #fff;</string>
+              </property>
+              <property name="text">
+               <string> Share    </string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../../.designer/backup/images/photo_2020-12-17_10-42-10.jpg</normaloff>../../.designer/backup/images/photo_2020-12-17_10-42-10.jpg</iconset>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QPushButton" name="unlock_btn">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">padding: 5px; background-color: #fff;</string>
+              </property>
+              <property name="text">
+               <string>Unlock</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tabWidgetPage2">
+           <attribute name="title">
+            <string/>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <spacer name="verticalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="user_creator">
+              <property name="font">
+               <font>
+                <family>Droid Sans</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: #fff; padding: 5px;</string>
+              </property>
+              <property name="text">
+               <string>Creat User</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="create_group">
+              <property name="font">
+               <font>
+                <family>Droid Sans</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">padding: 5px; background-color:#fff</string>
+              </property>
+              <property name="text">
+               <string>Creat Group</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="ou_launch">
+              <property name="font">
+               <font>
+                <family>Droid Sans</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">padding: 5px; background-color: #fff;</string>
+              </property>
+              <property name="text">
+               <string>OU Create</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="reset_pass_btn">
+              <property name="font">
+               <font>
+                <family>Droid Sans</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">padding: 5px; background-color: #fff;</string>
+              </property>
+              <property name="text">
+               <string>Reset Pass</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="remove_btn">
+              <property name="font">
+               <font>
+                <family>Droid Sans</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">padding: 5px; background-color: #fff;</string>
+              </property>
+              <property name="text">
+               <string>Remove</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
