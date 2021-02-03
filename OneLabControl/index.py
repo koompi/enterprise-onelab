@@ -365,19 +365,21 @@ class MainWindow(QtWidgets.QMainWindow):
         # Main -> logo
         # self.main_logo.setPixmap(QPixmap("/opt/.services/images/main_logo.png").scaled(70,50,Qt.IgnoreAspectRatio))
         
-        # Initializing icons
-        # On / Off button
-        #self.size = QSize(22,22)
-        #self.start_btn.setIcon(QIcon('/opt/.services/images/start.png'))
-        #self.start_btn.setIconSize(self.size)
+        #Initializing icons
+        #On / Off button
+        self.size = QSize(16,16)
+        self.start_btn.setIcon(QIcon('/opt/.services/images/start.jpg'))
+        self.start_btn.setIconSize(self.size)
         
         # Making the pause button checkable
         self.pause_btn.setCheckable(True)
         self.pause_btn.toggle()
+        self.pause_btn.setIcon(QIcon('/opt/.services/images/pause.jpg'))
         
         # Making the play button chckable
         self.play_btn.setCheckable(True)
         self.play_btn.toggle()
+        self.play_btn.setIcon(QIcon('/opt/.services/images/play.jpg'))
 
         # Making the start/stop30 btn checkable so we can keep track of wether it's been clicked or not
         self.start_btn.setCheckable(True)
@@ -385,15 +387,26 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # making the share button checkable 
         self.screen_share_btn.setCheckable(True)
-        self.start_btn.toggle()
+        self.screen_share_btn.setIcon(QIcon('/opt/.services/images/share_screen.jpg'))
 
         # making the screen lock button checkable 
         self.blank_btn.setCheckable(True)
         self.blank_btn.toggle()
+        self.blank_btn.setIcon(QIcon('/opt/.services/images/lock.jpg'))
 
         # making the unlock button checkable
         self.unlock_btn.setCheckable(True)
-        self.blank_btn.toggle()
+        self.unlock_btn.toggle()
+        self.unlock_btn.setIcon(QIcon('/opt/.services/images/unlock.png'))
+
+        # Setting an icon to the file btn
+        self.file_btn.setIcon(QIcon('/opt/.services/images/file_nav.jpg'))
+
+        # Setting refresh btn 
+        self.refresh_btn.setIcon(QIcon('/opt/.services/images/refresh.jpg'))
+
+        # blah
+        self.start_btn.setIcon(QIcon('/opt/.services/images/power.jpg'))
        
 
         ####################

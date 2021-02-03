@@ -59,7 +59,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1614</width>
+             <width>1597</width>
              <height>1500</height>
             </rect>
            </property>
@@ -1396,7 +1396,7 @@
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-26.jpg</normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-26.jpg</iconset>
+                <normaloff>../../../../../../opt/.services/images/photo_2020-12-17_10-31-26.jpg</normaloff>../../../../../../opt/.services/images/photo_2020-12-17_10-31-26.jpg</iconset>
               </property>
              </widget>
             </item>
@@ -1425,7 +1425,7 @@
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-30.jpg</normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-30.jpg</iconset>
+                <normaloff>../../../../../../opt/.services/images/photo_2020-12-17_10-31-22.jpg</normaloff>../../../../../../opt/.services/images/photo_2020-12-17_10-31-22.jpg</iconset>
               </property>
              </widget>
             </item>
@@ -1454,7 +1454,7 @@
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-19.jpg</normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-19.jpg</iconset>
+                <normaloff>../../../../../../opt/.services/images/photo_2020-12-17_10-31-19.jpg</normaloff>../../../../../../opt/.services/images/photo_2020-12-17_10-31-19.jpg</iconset>
               </property>
              </widget>
             </item>
@@ -1483,7 +1483,7 @@
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-28.jpg</normaloff>../../.designer/backup/images/photo_2020-12-17_10-31-28.jpg</iconset>
+                <normaloff>../../../../../../opt/.services/images/photo_2020-12-17_10-31-28.jpg</normaloff>../../../../../../opt/.services/images/photo_2020-12-17_10-31-28.jpg</iconset>
               </property>
              </widget>
             </item>
@@ -1531,7 +1531,7 @@
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../.designer/backup/images/play.jpg</normaloff>../../.designer/backup/images/play.jpg</iconset>
+                <normaloff>../../../../../../opt/.services/images/play.jpg</normaloff>../../../../../../opt/.services/images/play.jpg</iconset>
               </property>
              </widget>
             </item>
@@ -1576,7 +1576,7 @@
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../.designer/backup/images/photo_2020-12-17_10-42-08.jpg</normaloff>../../.designer/backup/images/photo_2020-12-17_10-42-08.jpg</iconset>
+                <normaloff>../../../../../../opt/.services/images/photo_2020-12-17_10-42-08.jpg</normaloff>../../../../../../opt/.services/images/photo_2020-12-17_10-42-08.jpg</iconset>
               </property>
              </widget>
             </item>
@@ -1605,12 +1605,17 @@
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../.designer/backup/images/photo_2020-12-17_10-42-10.jpg</normaloff>../../.designer/backup/images/photo_2020-12-17_10-42-10.jpg</iconset>
+                <normaloff>../../../../../../opt/.services/images/photo_2020-12-17_10-42-10.jpg</normaloff>../../../../../../opt/.services/images/photo_2020-12-17_10-42-10.jpg</iconset>
               </property>
              </widget>
             </item>
             <item row="4" column="0">
              <widget class="QPushButton" name="unlock_btn">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
               <property name="cursor">
                <cursorShape>PointingHandCursor</cursorShape>
               </property>
@@ -1618,7 +1623,11 @@
                <string notr="true">padding: 5px; background-color: #fff;</string>
               </property>
               <property name="text">
-               <string>Unlock</string>
+               <string> Unlock      </string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../../../../../../opt/.services/images/unlock.png</normaloff>../../../../../../opt/.services/images/unlock.png</iconset>
               </property>
              </widget>
             </item>

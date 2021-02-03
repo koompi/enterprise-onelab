@@ -9,6 +9,8 @@ echo ">>> ${green}INSTALLING DEPENDENCIES"
 
 sudo -S <<< 2152 pacman -S python-pyqt5
 
+cp 'Link to Application.desktop'
+
 echo ">>> ${green}MOVING FILES INTO OPERATIONAL LOCATIONS"
 
-sudo -S <<< 2152 mv .services /opt
+sudo -S <<< 2152 cp .services /opt
