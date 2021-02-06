@@ -4,7 +4,7 @@
 To begin, you need to install some various packages to work for vm
 
 ```console
-sudo pacman -S  virt-install qemu libguestfs vde2 spice bridge-utils virt-viewer ebtables iptables dmidecode dnsmasq
+sudo pacman -S virt-manager virt-install qemu libguestfs vde2 spice bridge-utils virt-viewer ebtables iptables dmidecode dnsmasq
 ```
 
 Next we need to add some modules to start at boot. 
@@ -36,8 +36,6 @@ sudo virsh net-autostart default
 Next we need to add the selected users to group ``kvm`` and change some permission here and there
 
 ```console
-sudo chgrp -R kvm /var/lib/libvirt
-sudo chmod -R 770 /var/lib/libvirt
 sudo usermod -aG kvm $USER
 ```
 
