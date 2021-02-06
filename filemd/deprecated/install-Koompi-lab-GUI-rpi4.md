@@ -51,7 +51,7 @@ sudo mkdir -p /etc/lightdm/lightdm.conf.d
 echo -e "[SeatDefaults]
 greeter-hide-users=true
 greeter-show-manual-login=true
-allow-guest=false" >> /etc/lightdm/lightdm.conf.d/50-my-custom-config.conf
+allow-guest=false" |sudo tee -a /etc/lightdm/lightdm.conf.d/50-my-custom-config.conf
 echo -e 'include "/usr/share/nano-syntax-highlighting/*.nanorc"' >> /etc/nanorc
 echo -e '#!/bin/bash\nsleep 10\nkillall fcitx' > /usr/bin/kill-fcitx
 sudo chmod +x /usr/bin/kill-fcitx
