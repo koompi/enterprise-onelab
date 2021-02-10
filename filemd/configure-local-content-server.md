@@ -74,6 +74,7 @@ subnet 10.100.100.0 netmask 255.255.255.0 {
   max-lease-time 7200;
   option domain-name "local";
   option domain-name-servers 10.100.100.1;
+}
 ```
 
 ```console 
