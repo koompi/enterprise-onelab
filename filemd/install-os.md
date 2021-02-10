@@ -48,9 +48,6 @@ sudo sfdisk /dev/sdb < enterprise-onelab/script/partitionscript
 Then, we start mounting operation
 
 ```console
-sudo su
-```
-```console
 sudo mkfs.vfat -F32 /dev/sdb1
 sudo mkswap /dev/sdb3
 sudo mkfs.ext4 -F /dev/sdb2
