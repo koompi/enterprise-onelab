@@ -42,8 +42,7 @@ sudo systemctl enable lightdm NetworkManager
 ## Setup user GUI config 
 
 ```console
-sudo su
-tar zxf enterprise-onelab/config/skel/skel.tar.gz -C /etc/skel/
+sudo tar zxf enterprise-onelab/config/skel/skel.tar.gz -C /etc/skel/
 sudo cp -r --no-target-directory enterprise-onelab/config/wallpapers/. /usr/share/wallpapers/
 sudo cp enterprise-onelab/config/theme/lightdm-gtk-greeter.conf /etc/lightdm/
 sudo cp enterprise-onelab/config/icons/* /usr/share/icons/
@@ -52,8 +51,8 @@ echo -e "[SeatDefaults]
 greeter-hide-users=true
 greeter-show-manual-login=true
 allow-guest=false" |sudo tee -a /etc/lightdm/lightdm.conf.d/50-my-custom-config.conf
-echo -e 'include "/usr/share/nano-syntax-highlighting/*.nanorc"' >> /etc/nanorc
-echo -e '#!/bin/bash\nsleep 10\nkillall fcitx' > /usr/bin/kill-fcitx
+echo -e 'include "/usr/share/nano-syntax-highlighting/*.nanorc"' |sudo tee -a /etc/nanorc
+echo -e '#!/bin/bash\nsleep 10\nkillall fcitx' |sudo tee -a /usr/bin/kill-fcitx
 sudo chmod +x /usr/bin/kill-fcitx
 ```
 
