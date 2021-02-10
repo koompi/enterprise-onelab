@@ -138,7 +138,7 @@ static ip_address=10.100.100.1/24
 ## Setup DNS
 
 ```console
-sudo nano /etc/name.conf
+sudo nano /etc/named.conf
 ```
 paste this in
 ```console
