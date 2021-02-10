@@ -12,8 +12,10 @@ sudo usermod -aG docker alarm
 
 ```console
 sudo mv /etc/hostapd/hostapd.conf{,.default}
-echo \
-'interface=wlan0
+sudo nano /etc/hostapd/hostapd.conf
+```
+```console
+interface=wlan0
 # SSID to be used in IEEE 802.11 management frames
 ssid=Sala
 # Driver interface type (hostap/wired/none/nl80211/bsd)
@@ -48,19 +50,22 @@ macaddr_acl=0
 
 # Uncomment and modify the following section if your device supports 802.11n
 ## Enable 802.11n support
-#ieee80211n=1
+ieee80211n=1
 ## QoS support
-#wmm_enabled=1
+wmm_enabled=1
 ## Use "iw list" to show device capabilities and modify ht_capab accordingly
-#ht_capab=[HT40+][SHORT-GI-40][TX-STBC][RX-STBC1][DSSS_CCK-40]' | sudo tee /etc/hostapd/hostapd.conf
+#ht_capab=[HT40+][SHORT-GI-40][TX-STBC][RX-STBC1][DSSS_CCK-40]
 ```
+
 
 ## Setup Dhcp and IP
 
 ```console
 sudo mv /etc/dhcpd.conf{,.default}
-echo \
-'authoritative;
+sudo nano /etc/dhcpd.conf
+```
+```console
+authoritative;
 subnet 10.100.100.0 netmask 255.255.255.0 {
   range 10.100.100.10 10.100.100.254;
   option broadcast-address 10.100.100.255;
@@ -69,11 +74,14 @@ subnet 10.100.100.0 netmask 255.255.255.0 {
   max-lease-time 7200;
   option domain-name "local";
   option domain-name-servers 10.100.100.1;
-}' | sudo tee /etc/dhcpd.conf
-    
+```
+
+```console 
 sudo mv /etc/dhcpcd.conf{,.default}
-echo \
-\# A sample configuration for dhcpcd.
+sudo nano /etc/dhcpcd.conf
+```
+```console
+# A sample configuration for dhcpcd.
 # See dhcpcd.conf(5) for details.
 
 # Allow users of this group to interact with dhcpcd via the control socket.
@@ -124,26 +132,43 @@ slaac private
 noipv4ll
 
 interface wlan0
-static ip_address=10.100.100.1/24' | sudo tee /etc/dhcpcd.conf
+static ip_address=10.100.100.1/24
 ```
 
 ## Setup DNS
 
 ```console
-echo 'include "/etc/named.conf.master";' | sudo tee -a /etc/named.conf >> /dev/null
+sudo nano /etc/name.conf
+```
+paste this in
+```console
+include "/etc/named.conf.master";
+```
 
-echo \
-'zone "koompilab.org" IN {
+Next, 
+```console
+sudo nano /etc/named.conf.master
+```
+```console
+zone "koompi.com" IN {
         type master;
-        file "koompilab.zone";
+        file "koompi.zone";
         allow-update { none; };
         notify no;
-};' | sudo tee -a /etc/named.conf.master
+};
+```
 
-echo \
-'$TTL 7200
-; koompilab.org
-@       IN      SOA     sala.koompilab.org. salabackend.koompilab.org. (
+Next, 
+```console
+sudo nano /var/named/koompi.zone
+```
+
+paste this in
+
+```console
+$TTL 7200
+; koompi.com
+@       IN      SOA     sala.koompi.com. salabackend.koompi.com. (
                                         2018111111 ; Serial
                                         28800      ; Refresh
                                         1800       ; Retry
@@ -152,15 +177,27 @@ echo \
                 IN      NS      sala
                 IN      NS      salabackend
 sala            IN      A       10.100.100.1
-salabackend     IN      A       10.100.100.1' | sudo tee -a /var/named/koompilab.zone
+salabackend     IN      A       10.100.100.1
 ```
+
+```console
+sudo systemctl enable --now hostapd
+sudo systemctl enable --now dhcpcd
+sudo systemctl enable --now dhcpd
+sudo systemctl enable --now named
+```
+
 
 ## Setup Web Server
 
 ```console
+sudo mkdir -p /etc/nginx/sites-available
+sudo mkdir -p /etc/nginx/sites-enabled
 sudo mv /etc/nginx/nginx.conf{,.default}
-echo \
-'user http;
+sudo nano /etc/nginx/nginx.conf
+```
+```console
+user http;
 worker_processes auto;
 worker_cpu_affinity auto;
 
@@ -190,47 +227,85 @@ http {
     # load configs
     include /etc/nginx/conf.d/*.conf;
     include /etc/nginx/sites-enabled/*;
-}' | sudo tee -a /etc/nginx/nginx.conf
-sudo mkdir -p /etc/nginx/sites-available
-sudo mkdir -p /etc/nginx/sites-enabled
-echo \
-'server {
-    listen 80;
-    listen 443;
-        server_name sala.koompi.com;
+```
 
-        location / {
-            proxy_pass http://127.0.0.1:7001;
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
+
+```console
+sudo nano /etc/nginx/sites-available/sala.koompi.com.conf
+```
+
+Then, paste this in
+
+```console
+server {
+  listen 80;
+  listen 443;
+    server_name sala.koompi.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:7001;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
-}' | sudo tee /etc/nginx/sites-available/sala.koompilab.org.conf
+}
+```
 
-echo \
-'server {
-    listen 80;
-    listen 443;
-        server_name sala.koompi.com;
+Next,
 
-        location / {
-            proxy_pass http://127.0.0.1:7002;
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
+```console
+sudo nano /etc/nginx/sites-available/salabackend.koompi.com.conf
+```
+
+Paste this in
+
+```console
+server {
+  listen 80;
+    server_name salabackend.koompi.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:7002;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
-}' | sudo tee /etc/nginx/sites-available/salabackend.koompilab.org.conf
+}
+
+server {
+  listen 443 ssl;
+    server_name salabackend.koompi.com;
+    return 301 http://$host$request_uri;
+    ssl_prefer_server_ciphers   on;  
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; 
+
+    ssl_certificate /etc/nginx/ssl/backend-fullchain.pem;
+    ssl_certificate_key /etc/nginx/ssl/backend-privkey.pem;
+
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Content-Type-Options "nosniff";
+}
+```
+
+Next,
+
+```console
 sudo ln -sf /etc/nginx/sites-available/*.conf /etc/nginx/sites-enabled/
-sudo systemctl restart nginx
+sudo systemctl enable --now nginx
 ```
 
 ## Setup Database Server
 
 ```console
-echo \
-'version: '3'
+sudo systemctl enable --now docker
+```
+
+
+```console
+version: '3'
 
 services:
   mongodb:
@@ -247,8 +322,8 @@ services:
       - MONGODB_AUTH=true
       - MONGODB_HTTPINTERFACE=false
     restart: always
-' | sudo tee /home/alarm/docker-compose.yaml
-
+```
+```console
 mkdir -p /home/alarm/docker/
 mkdir -p /home/alarm/docker/db
 mkdir -p /home/alarm/docker/backup
@@ -337,7 +412,7 @@ AWSBACKEND=
 AWSDB=
 SRVDB=
 SRVBACKEND=
-COLLECTIONS=()
+collections=()
 USERNAME=
 PASSWORD=
 
@@ -346,17 +421,17 @@ rsync -av -e "ssh -i $AWSKEY" $SRV:$AWSBACKEND $SRVBACKEND
 rsync -av -e "ssh -i $AWSKEY" $SRV:$AWSDB $SRVDB
 
 
-for((i=0; i<${#COLLECTION[@]};i++)){
+for((i=0; i<${#collections[@]};i++)){
 
-        docker exec -it mongodb mongoimport \
-        --db koompi-academy \
-        --collection ${COLLECTIIONS[$i]} \
-        --authenticationDatabase admin \
-        --username $USERNAME\
-        --password $PASSWORD  \
-        --drop\
-        --file /var/lib/mongodb/${COLLECTIONS[$i]}\
-        --jsonArray
+  docker exec -it mongodb mongoimport \
+  --db koompi-academy \
+  --collection ${collections[$i]} \
+  --authenticationDatabase admin \
+  --username $USERNAME\
+  --password $PASSWORD  \
+  --upsert \
+  --file /var/lib/mongodb/${collections[$i]}\
+  --jsonArray
 
 }
 
