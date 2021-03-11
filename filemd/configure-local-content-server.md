@@ -4,8 +4,7 @@
 ## Install Necessary Package
 
 ```console
-yay -S rsync bind hostapd dhcp nginx-mainline pm2 npm docker docker-compose
-sudo usermod -aG docker alarm
+yay -S rsync bind hostapd dhcp nginx-mainline pm2 npm bridge-utils
 ```
 
 ## Setup Hostapd
@@ -77,7 +76,7 @@ subnet 10.100.100.0 netmask 255.255.255.0 {
 }
 ```
 
-```console 
+```console
 sudo mv /etc/dhcpcd.conf{,.default}
 sudo nano /etc/dhcpcd.conf
 ```
@@ -146,7 +145,7 @@ paste this in
 include "/etc/named.conf.master";
 ```
 
-Next, 
+Next,
 ```console
 sudo nano /etc/named.conf.master
 ```
@@ -159,7 +158,7 @@ zone "koompi.com" IN {
 };
 ```
 
-Next, 
+Next,
 ```console
 sudo nano /var/named/koompi.zone
 ```
@@ -208,6 +207,7 @@ events {
 }
 
 http {
+  autoindex on;
   charset utf-8;
   sendfile on;
   tcp_nopush on;
@@ -280,8 +280,8 @@ server {
   listen 443 ssl;
     server_name salabackend.koompi.com;
     return 301 http://$host$request_uri;
-    ssl_prefer_server_ciphers   on;  
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; 
+    ssl_prefer_server_ciphers   on;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 
     ssl_certificate /etc/nginx/ssl/backend-fullchain.pem;
     ssl_certificate_key /etc/nginx/ssl/backend-privkey.pem;
@@ -302,34 +302,304 @@ sudo systemctl enable --now nginx
 ## Setup Database Server
 
 ```console
-sudo systemctl enable --now docker
+sudo brctl addbr virbr0
+sudo nano /etc/systemd/network/virbr0.network
+```
+Then Type in this.
+```console
+[Match]
+Name=virbr0
+Virtualization=false
+
+[Network]
+Address=10.100.200.1/24
+LinkLocalAddressing=yes
+IPMasquerade=yes
+IPForward=yes
+LLDP=yes
+EmitLLDP=customer-bridge
 ```
 
-
+Then,
 ```console
-version: '3'
-
-services:
-  mongodb:
-    image: webhippie/mongodb:latest
-    container_name: mongodb
-    volumes:
-      - /home/alarm/docker/db:/var/lib/mongodb
-      - /home/alarm/docker/backup:/var/lib/backup
-    ports:
-      - "27017:27017"
-      - "27018:27018"
-      - "27019:27019"
-    environment:
-      - MONGODB_AUTH=true
-      - MONGODB_HTTPINTERFACE=false
-    restart: always
+sudo nano /etc/systemd/network/virbr0.netdev
 ```
+Then Type in this.
+
 ```console
-mkdir -p /home/alarm/docker/
-mkdir -p /home/alarm/docker/db
-mkdir -p /home/alarm/docker/backup
-docker-compose up -d
+[NetDev]
+Name=virbr0
+Kind=bridge
+```
+
+Then, start the service and enable it
+
+```console
+systemctl enable --now systemd-networkd
+sudo iptables -A FORWARD -i virbr0 -o eth0 -j ACCEPT
+sudo iptables-save -f /etc/iptables/iptables.rules
+```
+
+Then,
+
+```console
+cd DirectoryOfTheStorage
+mkdir mongodb
+sudo pacstrap -c mongodb/ coreutils shadows pacman systemd iproute2 iputils nano procps-ng
+sudo systemd-nspawn -D mongodb
+```
+Then, inside the container
+
+```console
+passwd
+useradd -m isaac
+passwd isaac
+logout
+```
+
+Then,
+```console
+sudo nano /etc/systemd/system/systemd-nspawn@mongodb.service
+```
+
+Then, type in this
+
+```console
+#  SPDX-License-Identifier: LGPL-2.1-or-later
+#
+#  This file is part of systemd.
+#
+#  systemd is free software; you can redistribute it and/or modify it
+#  under the terms of the GNU Lesser General Public License as published by
+#  the Free Software Foundation; either version 2.1 of the License, or
+#  (at your option) any later version.
+
+[Unit]
+Description=Container %i
+Documentation=man:systemd-nspawn(1)
+Wants=modprobe@tun.service modprobe@loop.service modprobe@dm-mod.service
+PartOf=machines.target
+Before=machines.target
+After=network.target systemd-resolved.service modprobe@tun.service modprobe@loop.service modprobe@dm-mod.service
+RequiresMountsFor=/var/lib/machines/%i
+
+[Service]
+# Make sure the DeviceAllow= lines below can properly resolve the 'block-loop' expression (and others)
+ExecStart=systemd-nspawn --quiet --keep-unit --boot --link-journal=try-guest --network-bridge=virbr0 -U --settings=override --machine=%i
+KillMode=mixed
+Type=notify
+RestartForceExitStatus=133
+SuccessExitStatus=133
+Slice=machine.slice
+Delegate=yes
+TasksMax=16384
+WatchdogSec=3min
+
+# Enforce a strict device policy, similar to the one nspawn configures when it
+# allocates its own scope unit. Make sure to keep these policies in sync if you
+# change them!
+DevicePolicy=closed
+DeviceAllow=/dev/net/tun rwm
+DeviceAllow=char-pts rw
+
+# nspawn itself needs access to /dev/loop-control and /dev/loop, to implement
+# the --image= option. Add these here, too.
+DeviceAllow=/dev/loop-control rw
+DeviceAllow=block-loop rw
+DeviceAllow=block-blkext rw
+
+# nspawn can set up LUKS encrypted loopback files, in which case it needs
+# access to /dev/mapper/control and the block devices /dev/mapper/*.
+DeviceAllow=/dev/mapper/control rw
+DeviceAllow=block-device-mapper rw
+
+[Install]
+WantedBy=machines.target
+```
+
+Then, login into it
+
+```console
+sudo machinectl login mongodb
+```
+
+Inside the container, type this
+
+```console
+nano /etc/systemd/network/host0.network
+```
+
+Then, type in this
+
+```console
+#  SPDX-License-Identifier: LGPL-2.1-or-later
+#
+#  This file is part of systemd.
+#
+#  systemd is free software; you can redistribute it and/or modify it
+#  under the terms of the GNU Lesser General Public License as published by
+#  the Free Software Foundation; either version 2.1 of the License, or
+#  (at your option) any later version.
+
+# This network file matches the container-side of the virtual Ethernet link
+# created by systemd-nspawn's --network-veth switch. See systemd-nspawn(1) for
+# details.
+
+[Match]
+Virtualization=container
+Name=host0
+
+[Network]
+Address=10.100.200.2/24
+Gateway=10.100.200.1
+DNS=10.100.200.1
+LinkLocalAddressing=yes
+LLDP=yes
+EmitLLDP=customer-bridge
+
+[DHCP]
+UseTimezone=yes
+```
+
+Then, start the service
+
+```console
+systemctl enable --now systemd-networkd
+```
+
+Then, install mongodb
+
+```console
+pacman -U http://tardis.tiny-vps.com/aarm/packages/b/boost-libs/boost-libs-1.62.0-4-armv7h.pkg.tar.xz --noconfirm &&
+pacman -U http://tardis.tiny-vps.com/aarm/packages/y/yaml-cpp/yaml-cpp-0.5.3-3-armv7h.pkg.tar.xz --noconfirm &&
+pacman -U http://tardis.tiny-vps.com/aarm/packages/o/openssl-1.0/openssl-1.0-1.0.2.k-3-armv7h.pkg.tar.xz --noconfirm &&
+pacman -U http://tardis.tiny-vps.com/aarm/packages/i/icu/icu-58.2-2-armv7h.pkg.tar.xz --noconfirm &&
+pacman -U http://tardis.tiny-vps.com/aarm/packages/s/snappy/snappy-1.1.3-2-armv7h.pkg.tar.xz --noconfirm &&
+pacman -U http://tardis.tiny-vps.com/aarm/packages/g/gcc-libs/gcc-libs-6.2.1-1-armv7h.pkg.tar.xz --noconfirm &&
+pacman -U http://tardis.tiny-vps.com/aarm/packages/m/mongodb/mongodb-3.2.10-2-armv7h.pkg.tar.xz --noconfirm &&
+pacman -U http://tardis.tiny-vps.com/aarm/packages/m/mongodb-tools/mongodb-tools-3.2.5-1-armv7h.pkg.tar.xz --noconfirm 
+```
+
+Then, configure Mongodb
+
+```console
+mv /etc/mongodb/mongodb.conf{,.default}
+nano /etc/mongodb/mongodb.conf
+```
+
+Then type this this
+
+```console
+# mongodb.conf
+
+# Where to store the data.
+dbpath=/var/lib/mongodb
+
+#where to log
+logpath=/var/log/mongodb/mongodb.log
+
+logappend=true
+
+bind_ip = 127.0.0.1
+#port = 27017
+
+# Enable journaling, http://www.mongodb.org/display/DOCS/Journaling
+journal=true
+
+# Enables periodic logging of CPU utilization and I/O wait
+#cpu = true
+
+# Turn on/off security.  Off is currently the default
+#noauth = true
+auth = true
+
+# Verbose logging output.
+#verbose = true
+
+# Inspect all client data for validity on receipt (useful for
+# developing drivers)
+#objcheck = true
+
+# Enable db quota management
+#quota = true
+
+# Set diagnostic logging level where n is
+#   0=off (default)
+#   1=W
+#   2=R
+#   3=both
+#   7=W+some reads
+#diaglog = 0
+
+# Diagnostic/debugging option
+#nocursors = true
+
+# Ignore query hints
+#nohints = true
+
+# Disable the HTTP interface (Defaults to localhost:27018).
+nohttpinterface = true
+
+# Turns off server-side scripting.  This will result in greatly limited
+# functionality
+#noscripting = true
+
+# Turns off table scans.  Any query that would do a table scan fails.
+#notablescan = true
+
+# Disable data file preallocation.
+#noprealloc = true
+
+# Specify .ns file size for new databases.
+# nssize = <size>
+
+# Accout token for Mongo monitoring server.
+#mms-token = <token>
+
+# Server name for Mongo monitoring server.
+#mms-name = <server-name>
+
+# Ping interval for Mongo monitoring server.
+#mms-interval = <seconds>
+
+# Replication Options
+
+# in replicated mongo databases, specify here whether this is a slave or master
+#slave = true
+#source = master.example.com
+# Slave only: specify a single database to replicate
+#only = master.example.com
+# or
+#master = true
+#source = slave.example.com
+
+# Address of a server to pair with.
+#pairwith = <server:port>
+# Address of arbiter server.
+#arbiter = <server:port>
+# Automatically resync if slave data is stale
+#autoresync
+# Custom size for replication operation log.
+#oplogSize = <MB>
+# Size limit for in-memory storage of op ids.
+#opIdMem = <bytes>
+
+# SSL options
+# Enable SSL on normal ports
+#sslOnNormalPorts = true
+# SSL Key file and password
+#sslPEMKeyFile = /etc/ssl/mongodb.pem
+#sslPEMKeyPassword = pass
+```
+
+Then, start the service
+
+```console
+echo 'net.ipv4.ip_forward=1
+net.ipv4.conf.host0.route_localnet=1' |tee /etc/sysctl.d/30-ipforward.conf
+iptables -t nat -I PREROUTING -p tcp -d 10.100.200.2/24 --dport 27017 -j DNAT --to-destination 127.0.0.1:27017
+iptables-save -f /etc/iptables/iptables.rules
+systemctl enable --now mongodb iptables
 ```
 
 ## Add-on
@@ -377,32 +647,6 @@ WantedBy=multi-user.target
 **Note:** ***Please Input the localtion of the mount point and the UUID of the drive in the variables above***
 
 
-### Fix Mongodb Lock after reboot
-
-```console
-echo \
-'#!/bin/bash
-
-docker stop mongodb
-rm -rf /home/alarm/docker/db/mongod.lock
-docker start mongodb' | sudo tee /usr/bin/fixmongodb.sh
-sudo chmod +x /usr/bin/fixmongodb.sh
-
-echo \
-'[Unit]
-Description=Remove Mongodb lock and Restart Docker
-After=docker.service
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/fixmongodb.sh
-RemainAfterExit=yes
-
-
-[Install]
-WantedBy=multi-user.target' | sudo tee /usr/lib/systemd/system/fixmongodb.service
-```
-
 ### Sync Content
 
 ```console
@@ -424,20 +668,41 @@ rsync -av -e "ssh -i $AWSKEY" $SRV:$AWSDB $SRVDB
 
 
 for((i=0; i<${#collections[@]};i++)){
-
-  docker exec -it mongodb mongoimport \
+  
+  mongoimport\
   --db koompi-academy \
   --collection ${collections[$i]} \
   --authenticationDatabase admin \
-  --username $USERNAME\
+  --username $USERNAME \
   --password $PASSWORD  \
   --upsert \
-  --file /var/lib/mongodb/${collections[$i]}\
+  --file $SRVDB/${collections[$i]}.json \
   --jsonArray
 
 }
 
 pm2 restart 1
+```
+
+### Manage Admin Account on Mongodb
+
+#### Create Admin
+
+```console
+use admin
+db.createUser(
+  {
+    user: "USERNAME",
+    pwd: "PASSWORD", // or cleartext password
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+  }
+)
+```
+
+#### Login Admin
+
+```console
+mongo --port 27017  --authenticationDatabase "admin" -u "USERNAME" -p 
 ```
 
 **Note:** ***Please Input the all the varaibles needed***
