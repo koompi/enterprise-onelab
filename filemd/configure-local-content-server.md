@@ -4,7 +4,7 @@
 ## Install Necessary Package
 
 ```console
-yay -S rsync bind hostapd dhcp nginx-mainline pm2 npm bridge-utils
+yay -S rsync bind hostapd nginx-mainline pm2 npm bridge-utils
 ```
 
 ## Setup Hostapd
@@ -60,79 +60,23 @@ wmm_enabled=1
 ## Setup Dhcp and IP
 
 ```console
-sudo mv /etc/dhcpd.conf{,.default}
-sudo nano /etc/dhcpd.conf
+sudo nano /etc/systemd/network/25-wireless.network
 ```
 ```console
-authoritative;
-subnet 10.100.100.0 netmask 255.255.255.0 {
-  range 10.100.100.10 10.100.100.254;
-  option broadcast-address 10.100.100.255;
-  option routers 10.100.100.1;
-  default-lease-time 600;
-  max-lease-time 7200;
-  option domain-name "local";
-  option domain-name-servers 10.100.100.1;
-}
-```
+[Match]
+Name=wlan0
 
-```console
-sudo mv /etc/dhcpcd.conf{,.default}
-sudo nano /etc/dhcpcd.conf
-```
-```console
-# A sample configuration for dhcpcd.
-# See dhcpcd.conf(5) for details.
+[Network]
+Address=10.100.100.1/24
+DHCPServer=yes
 
-# Allow users of this group to interact with dhcpcd via the control socket.
-#controlgroup wheel
-
-# Inform the DHCP server of our hostname for DDNS.
-#hostname
-
-# Use the hardware address of the interface for the Client ID.
-#clientid
-# or
-# Use the same DUID + IAID as set in DHCPv6 for DHCPv4 ClientID as per RFC4361.
-# Some non-RFC compliant DHCP servers do not reply with this set.
-# In this case, comment out duid and enable clientid above.
-duid
-
-# Persist interface configuration when dhcpcd exits.
-persistent
-
-# vendorclassid is set to blank to avoid sending the default of
-# dhcpcd-<version>:<os>:<machine>:<platform>
-vendorclassid
-
-# A list of options to request from the DHCP server.
-option domain_name_servers, domain_name, domain_search
-option classless_static_routes
-# Respect the network MTU. This is applied to DHCP routes.
-option interface_mtu
-
-# Request a hostname from the network
-option host_name
-
-# Most distributions have NTP support.
-#option ntp_servers
-
-# Rapid commit support.
-# Safe to enable by default because it requires the equivalent option set
-# on the server to actually work.
-option rapid_commit
-
-# A ServerID is required by RFC2131.
-require dhcp_server_identifier
-
-# Generate SLAAC address using the Hardware Address of the interface
-#slaac hwaddr
-# OR generate Stable Private IPv6 Addresses based from the DUID
-slaac private
-noipv4ll
-
-interface wlan0
-static ip_address=10.100.100.1/24
+[DHCPServer]
+DNS=10.100.100.1 1.1.1.1
+PoolOffset=0
+PoolSize=254
+DefaultLeaseTimeSec=1800
+MaxLeaseTimeSec=7200
+Timezone="Asia/Phnom_Penh"
 ```
 
 ## Setup DNS
