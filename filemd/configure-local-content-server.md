@@ -72,33 +72,114 @@ DHCPServer=yes
 
 [DHCPServer]
 DNS=10.100.100.1 1.1.1.1
-PoolOffset=0
+PoolOffset=1
 PoolSize=254
 DefaultLeaseTimeSec=1800
 MaxLeaseTimeSec=7200
-Timezone="Asia/Phnom_Penh"
+Timezone=Asia/Phnom_Penh
 ```
 
 ## Setup DNS
+
+```console
+sudo touch /var/log/named.log
+sudo chown root:named /var/log/named.log
+sudo chmod 664 /var/log/named.log
+```
 
 ```console
 sudo nano /etc/named.conf
 ```
 paste this in
 ```console
-include "/etc/named.conf.master";
+include "/etc/named.conf.options";
+include "/etc/named.conf.zones";
+include "/etc/named.conf.acl";
+include "/etc/named.conf.logging";
 ```
 
 Next,
 ```console
-sudo nano /etc/named.conf.master
+sudo nano /etc/named.conf.acl
 ```
 ```console
+acl local-networks {
+    127.0.0.0/8;
+    10.100.100.0/24;
+};
+```
+
+Next,
+```console
+sudo nano /etc/named.conf.options
+```
+```console
+options {
+    directory "/var/named";
+    pid-file "/run/named/named.pid";
+    session-keyfile "/run/named/session.key";
+
+    allow-query       { local-networks; };
+    allow-recursion   { local-networks; };
+    allow-query-cache { local-networks; };
+    allow-transfer    { local-networks; };
+    allow-update      { local-networks; };
+
+    version none;
+    hostname none;
+    server-id none;
+
+    auth-nxdomain yes;
+    datasize default;
+    empty-zones-enable no;
+    dnssec-validation yes;
+
+    forwarders { 1.1.1.1; 8.8.8.8; };
+};
+```
+
+Next,
+```console
+sudo nano /etc/named.conf.zone
+```
+```console
+zone "localhost" IN {
+    type master;
+    file "localhost.zone";
+};
+
+zone "0.0.127.in-addr.arpa" IN {
+    type master;
+    file "127.0.0.zone";
+};
+
+zone "1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa" {
+    type master;
+    file "localhost.ip6.zone";
+};
 zone "koompi.com" IN {
-        type master;
-        file "koompi.zone";
-        allow-update { none; };
-        notify no;
+    type master;
+    file "koompi.zone";
+    allow-update { none; };
+    notify no;
+};
+```
+
+Next,
+```console
+sudo nano /etc/named.conf.acl
+```
+```console
+logging {
+    channel xfer-log {
+        file "/var/log/named.log";
+            print-category yes;
+            print-severity yes;
+            severity info;
+        };
+        category xfer-in { xfer-log; };
+        category xfer-out { xfer-log; };
+        category notify { xfer-log; };
 };
 ```
 
@@ -112,23 +193,24 @@ paste this in
 ```console
 $TTL 7200
 ; koompi.com
-@       IN      SOA     sala.koompi.com. salabackend.koompi.com. (
+@       IN      SOA     ns.koompi.com. admin.koompi.com. (
                                         2018111111 ; Serial
                                         28800      ; Refresh
                                         1800       ; Retry
                                         604800     ; Expire - 1 week
                                         86400 )    ; Negative Cache TTL
-                IN      NS      sala
-                IN      NS      salabackend
-sala            IN      A       10.100.100.1
-salabackend     IN      A       10.100.100.1
+                IN      NS      ns
+ns              IN      A       10.100.100.1
+sala            IN      CNAME   ns
+salabackend     IN      CNAME   ns
+rachel          IN      CNAME   ns
+admin           IN      CNAME   ns
 ```
 
 ```console
 sudo systemctl enable --now hostapd
-sudo systemctl enable --now dhcpcd
-sudo systemctl enable --now dhcpd
 sudo systemctl enable --now named
+sudo systemctl enable --now systemd-networkd
 ```
 
 
