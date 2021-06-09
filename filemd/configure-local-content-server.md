@@ -141,7 +141,7 @@ options {
 
 Next,
 ```console
-sudo nano /etc/named.conf.internal.zone
+sudo nano /etc/named.conf.internal.zones
 ```
 ```console
 zone "localhost" IN {
@@ -168,7 +168,7 @@ zone "koompi.com" IN {
 
 Next,
 ```console
-sudo nano /etc/named.conf.external.zone
+sudo nano /etc/named.conf.external.zones
 ```
 ```console
 zone "website1.local" IN {
