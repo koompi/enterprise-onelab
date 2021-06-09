@@ -92,9 +92,10 @@ sudo nano /etc/named.conf
 ```
 paste this in
 ```console
-include "/etc/named.conf.options";
-include "/etc/named.conf.zones";
 include "/etc/named.conf.acl";
+include "/etc/named.conf.options";
+include "/etc/named.conf.internal.zones";
+include "/etc/named.conf.external.zones";
 include "/etc/named.conf.logging";
 ```
 
@@ -140,7 +141,7 @@ options {
 
 Next,
 ```console
-sudo nano /etc/named.conf.zone
+sudo nano /etc/named.conf.internal.zone
 ```
 ```console
 zone "localhost" IN {
@@ -167,7 +168,28 @@ zone "koompi.com" IN {
 
 Next,
 ```console
-sudo nano /etc/named.conf.acl
+sudo nano /etc/named.conf.external.zone
+```
+```console
+zone "website1.local" IN {
+    type master;
+    file "website1.local.external.zone";
+    allow-update { none; };
+    notify no;
+};
+# zone "website2.local" IN {
+#    type master;
+#    file "website2.local.external.zone";
+#    allow-update { none; };
+#    notify no;
+#};
+
+```
+
+
+Next,
+```console
+sudo nano /etc/named.conf.logging
 ```
 ```console
 logging {
@@ -205,6 +227,54 @@ sala            IN      CNAME   ns
 salabackend     IN      CNAME   ns
 rachel          IN      CNAME   ns
 admin           IN      CNAME   ns
+```
+
+Next,
+```console
+sudo nano /var/named/website1.local.external.zone
+```
+
+paste this in
+
+```console
+$TTL 7200
+; website1.local
+@       IN      SOA     ns01.website1.local. ns02.website1.local. (
+                                        2018111111 ; Serial
+                                        28800      ; Refresh
+                                        1800       ; Retry
+                                        604800     ; Expire - 1 week
+                                        86400 )    ; Negative Cache TTL
+                IN      NS      ns
+ns01            IN      A       10.100.100.1
+sala            IN      CNAME   ns01
+salabackend     IN      CNAME   ns01
+rachel          IN      CNAME   ns01
+admin           IN      CNAME   ns01
+```
+
+Next,
+```console
+sudo nano /var/named/website2.local.external.zone
+```
+
+paste this in
+
+```console
+$TTL 7200
+; website2.local
+@       IN      SOA     ns01.website2.local. ns02.website2.local. (
+                                        2018111111 ; Serial
+                                        28800      ; Refresh
+                                        1800       ; Retry
+                                        604800     ; Expire - 1 week
+                                        86400 )    ; Negative Cache TTL
+                IN      NS      ns
+ns01            IN      A       10.100.100.1
+sala            IN      CNAME   ns01
+salabackend     IN      CNAME   ns01
+rachel          IN      CNAME   ns01
+admin           IN      CNAME   ns01
 ```
 
 ```console
