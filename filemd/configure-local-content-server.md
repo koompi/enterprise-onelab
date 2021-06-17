@@ -60,7 +60,7 @@ wmm_enabled=1
 ## Setup Dhcp and IP
 
 ```console
-sudo nano /etc/systemd/network/25-wireless.network
+sudo nano /etc/systemd/network/20-wireless.network
 ```
 ```console
 [Match]
