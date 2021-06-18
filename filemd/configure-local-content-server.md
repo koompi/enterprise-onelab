@@ -67,6 +67,7 @@ sudo nano /etc/systemd/network/20-wireless.network
 Name=wlan0
 
 [Network]
+IPMasquerade=both
 Address=10.100.100.1/24
 DHCPServer=yes
 
