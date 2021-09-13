@@ -86,6 +86,7 @@ Timezone=Asia/Phnom_Penh
 sudo touch /var/log/named.log
 sudo chown root:named /var/log/named.log
 sudo chmod 664 /var/log/named.log
+sudo usermod -aG named $USER
 ```
 
 ```console
