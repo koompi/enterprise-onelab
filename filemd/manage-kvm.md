@@ -53,10 +53,8 @@ sudo virt-xml $MACHINE --edit --confirm --qemu-commandline 'env=SPICE_DEBUG_ALLO
 To allow image compression for over-network spice session for better performance
 
 ```console
-sudo virt-xml $MACHINE --edit --graphics image.compression='quic' 
-sudo virt-xml $MACHINE --edit --graphics zlib.compression='auto' 
-sudo virt-xml $MACHINE --edit --graphics clipboard.copypaste='yes'
-sudo virt-xml $MACHINE --edit --grahpics jpeg.compression='auto'
-sudo virt-xml $MACHINE --edit --graphics playback.compression='on'
+sudo virt-xml $MACHINE --edit --graphics image.compression='quic' --update
+sudo virt-xml $MACHINE --edit --graphics zlib.compression='auto' --update
+sudo virt-xml $MACHINE --edit --graphics clipboard.copypaste='yes' --update
 sudo virt-xml $MACHINE --edit --graphics streaming.mode='filter' --update
 ```
