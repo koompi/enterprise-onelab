@@ -289,6 +289,7 @@ sudo systemctl enable --now systemd-networkd
 ## Setup Web Server
 
 ```console
+echo "security.limit_extensions = .php .html .htm" | sudo tee -a /etc/php/php-fpm.d/www.conf;
 sudo mkdir -p /etc/nginx/sites-available
 sudo mkdir -p /etc/nginx/sites-enabled
 sudo mv /etc/nginx/nginx.conf{,.default}
@@ -394,7 +395,7 @@ Next,
 
 ```console
 sudo ln -sf /etc/nginx/sites-available/*.conf /etc/nginx/sites-enabled/
-sudo systemctl enable --now nginx
+sudo systemctl enable --now nginx php-fpm
 ```
 
 ## Setup Database Server
