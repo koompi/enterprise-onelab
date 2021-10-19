@@ -4,7 +4,7 @@
 ## Install Necessary Package
 
 ```console
-yay -S rsync bind hostapd nginx-mainline pm2 npm bridge-utils udisks2 ntfs-3g
+yay -S rsync bind hostapd nginx-mainline pm2 npm bridge-utils udisks2 ntfs-3g php-fpm kiwix-tools rustup
 ```
 
 ## Setup Hostapd
