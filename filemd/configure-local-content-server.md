@@ -209,7 +209,7 @@ logging {
 
 Next,
 ```console
-sudo nano /var/named/koompi.zone
+sudo nano /var/named/koompi.internal.zone
 ```
 
 paste this in
