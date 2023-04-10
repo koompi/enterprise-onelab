@@ -36,7 +36,8 @@ sudo virsh net-autostart default
 Next we need to add the selected users to group ``kvm`` and change some permission here and there
 
 ```console
-sudo usermod -aG kvm $USER
+sudo usermod -aG libvirt-qemu $USER
+sudo usermod -aG libvirt $USER
 ```
 
 If the ``$USER`` is currently log in, it must be logged out.
